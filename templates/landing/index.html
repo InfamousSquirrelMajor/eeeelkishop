@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>School project</title>
+    <style>
+      * {
+          padding: 0px;
+          margin: 0px;
+          scroll-behavior: smooth;
+      }
+      :root{
+      --background-dark: #2d3548;
+      --text-light: rgba(255, 255, 255, 0.6);
+      --text-lighter: rgba(255, 255, 255, 0.9);
+      --spacing-s: 8px;
+      --spacing-l: 16px;
+      --spacing-xl: 32px;
+      --spacing-xxl: 64px;
+      --width-container: 1200px;
+      }
+      .LOGO{
+          color:black;
+          font-family: sans-serif;
+          margin-left: 40px;
+      }
+      .nav__links{
+        display: flex;
+        list-style: none;
+        text-align: right;
+      }
+      
+      .nav__links a{
+          text-decoration: none;
+          color: black;
+          font-family: "SofiaSansSemiCondensed-Regular";
+          font-size: 16px;
+          margin-right: 25px;
+          padding: 9px;
+          transition: 0.75s;
+      }
+      .header{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+      }
+      .content{
+        margin-top: 10em;
+        text-align: center;
+        font-family: "Comfortaa-Regular";
+      }
+      input[type="email"] {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.342);
+        padding: 5px;
+      }
+      .txt{
+        padding-bottom: 350px;
+      }
+      .content button {
+          font-family: "Comfortaa-Regular";
+          background-color: transparent;
+          padding: 10px; 
+          border: none;
+          transition: 0.5s;
+
+      }
+      .content button:hover {
+        transform: scale(1.2);
+      }
+      .content div{
+        margin-top: 25px;
+          
+      }
+      #slogan {
+        margin-left: 25px;
+        font-size: 58px;
+        justify-content: center;
+        color: rgb(255, 255, 255);
+      }
+      #slogan h1 {
+        font-family: "MontserratAlternates-Regular";
+      }
+      #slogan p {
+        font-size: 30px;
+
+      }
+      .first_block{
+        background-image: url("https://images.unsplash.com/photo-1676798531090-1608bedeac7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        height: 100vh;
+        background-position: center;
+        border-bottom: 4px solid rgba(98, 100, 98, 0.664);
+
+      }
+      .about_block{
+        padding-top: 50px;
+        text-align: center;
+        padding-bottom: 100px;
+
+      }
+      .about_block h2{
+        font-family: "Comfortaa-Regular";
+        padding-top: 50px;
+        padding-bottom: 15px;
+        font-size: 30px;
+      }
+      .about_block p{
+        font-family: "Comfortaa-Regular";
+        font-size: 22px;
+        padding-left: 120px;
+        padding-right: 120px;
+      }
+      .reviews{
+        padding-top: 50px;
+        text-align: center;
+        padding-bottom: 100px;
+
+      }
+      .reviews h2{
+        font-family: "Comfortaa-Regular";
+        padding-top: 50px;
+        padding-bottom: 15px;
+        font-size: 30px;
+      }
+      .reviews p{
+        font-family: "Comfortaa-Regular";
+        font-size: 22px;
+        padding-left: 120px;
+        padding-right: 120px;
+      }
+      .catalog {
+        padding-top: 100px;
+      }
+      .catalog h1 {
+        font-family: "Comfortaa-Regular";
+        text-align: center;
+        padding-bottom: 50px;
+      }
+      .hero-section{
+        align-items: flex-start;
+        display: flex;
+        min-height: 100%;
+        justify-content: center;
+        transform: scale(0.95);
+      }
+      .card-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: var(--spacing-l);
+        max-width: var(--width-container);
+        width: 100%;
+      
+      }
+      @media (min-width: 540px) {
+      .card-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+      }
+      @media (min-width: 960px) {
+          .card-grid{
+              grid-template-columns: repeat(4, 1fr);
+          }
+      }
+      .card{
+          list-style: none;
+          position: relative;
+          margin-left: 25px;
+          margin-top: 25px;
+      }
+      .card::before{
+          content: '';
+          display: block;
+          padding-bottom: 150%;
+          width: 100%;
+      }
+      .card__background{
+          background-size: cover;
+          background-position: center;
+          border-radius: var(--spacing-l);
+          filter: brightness(.75) saturate(1.2) contrast(0.85);
+          position: absolute;
+          inset: 0;
+          transform-origin: center;
+          transform: scale(1) translateZ(0);
+          transition: filter 200ms linear, transform 200ms linear;
+      }
+      .card:hover .card__background{
+          transform: scale(1.05) translateZ(0);
+      }
+      .card-grid:hover > .card:not(:hover) .card__background{
+          filter: brightness(.5) saturate(0) contrast(1.2) blur(20px);
+      }
+      .card-grid:hover > .card:not(:hover) .card__Name{
+        color: transparent;
+      }
+      .card-grid:hover > .card:not(:hover) .card__status{
+        color: transparent;
+      }
+      .card__content{
+          left: 0;
+          padding: var(--spacing-l);
+          position: absolute;
+          top: 0;
+      }
+      .card__status{
+          color: var(--text-light);
+          font-family: "SofiaSansSemiCondensed-Regular";
+          font-size: .9rem;
+          margin-bottom: var(--spacing-s);
+          text-transform: uppercase;
+      }
+      .card__Name{
+          text-decoration: none;
+          color: white;
+          font-size: 1.9rem;
+          text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+          line-height: 1.4px;
+          word-spacing: 100vw;
+      }
+      h3 {
+        text-align: center;
+        color: white;
+        margin-top: 25px;
+        font-family: "Comfortaa-Regular";
+        font-size: 30px;
+        filter: drop-shadow(0 0 20px white);
+      }
+      .wishes {
+        margin-left: 50px;
+        display: grid;
+        gap: 1.5em;
+        grid-template-columns: 22% 78%;
+      }
+
+      .wishes p {
+        margin-top: 175px;
+        margin-right: 500px;
+        font-family: "Comfortaa-Regular";
+        font-size: 25px;
+
+      }
+
+      .wishes img{
+        width: 68%;
+        transform: scale(0.8);
+        border-radius: 250px;
+        margin-left: 200px;
+        border: 5px solid transparent;
+        transition: 1s;
+      }
+      .footer {
+        padding: 30px;
+        font-size: 25px;
+        font-family: "RedactedScript-Light";
+        background-color: rgba(0, 0, 0, 0.719);
+        text-align: right;
+        color: aliceblue;
+
+      }
+      @font-face {
+        font-family: 'SofiaSansSemiCondensed-Regular';
+        src: local('SofiaSansSemiCondensed-Regular'),
+        url('../static/fonts/SofiaSansSemiCondensed-Regular.ttf') format("truetype");
+      }
+      @font-face {
+        font-family: 'RedactedScript-Light';
+        src: local('RedactedScript-Light'),
+        url('../static/fonts/RedactedScript-Light.ttf') format("truetype");
+      }
+      @font-face {
+        font-family: 'Comfortaa-Regular';
+        src: local('Comfortaa-Regular'),
+        url('../static/fonts/Comfortaa-Regular.ttf') format("truetype");
+      }
+      @font-face {
+        font-family: 'MontserratAlternates-Regular';
+        src: local('MontserratAlternates-Regular'),
+        url('../static/fonts/MontserratAlternates-Regular.ttf') format("truetype");
+      }
+      @font-face {
+        font-family: 'PTSansCaption-Regular';
+        src: local('PTSansCaption-Regular'),
+        url('../static/fonts/PTSansCaption-Regular.ttf') format("truetype");
+      }
+    </style>
+</head>
+<body>
+  <div class="first_block">
+    <div class='header'>
+      <h2 class="LOGO">LOGO</h2>
+      <nav>
+        <ul class="nav__links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#catalog">Каталог</a></li>
+            <li><a href=""><span class="material-symbols-outlined">shopping_cart_checkout</span></a></li>
+        </ul>
+      </nav> 
+    </div>
+    <div class="txt">
+      <div class="content" id="slogan">
+        <h1>STADSTRY</h1>
+        <p>Зимой и летом - одним цветом. -Ёлки.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="catalog" >
+    <h1>Что мы предлагаем?</h1>
+    <section class="hero-section" id = "catalog">
+      <div class="card-grid">
+          <a href="pidor.html" class="card">
+              <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1575450566231-14b357f06a01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+              <div class="card__content">
+                  <p class="card__status">CHOKLADO</p>
+                  <h3 class="card__Name">₽123</h3>
+              </div>
+          </a>
+          <a href="" class="card">
+              <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1612979168796-bcae1575b8c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+              <div class="card__content">
+                  <p class="card__status">VALLAP</p>
+                  <h3 class="card__Name">₽1233</h3>
+              </div>
+          </a>
+          <a href="maks.html" class="card">
+              <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1609023416852-a485f2d61d95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+              <div class="card__content">
+                  <p class="card__status">ESODRAG</p>
+                  <h3 class="card__Name">₽123</h3>
+              </div>
+          </a>
+          <a href="sergay.html" class="card">
+              <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1580771571089-aa0bbe064ef4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+              <div class="card__content">
+                  <p class="card__status">FLEND</p>
+                  <h3 class="card__Name">₽1233</h3>
+              </div>
+              <a href="pidor.html" class="card">
+                <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1616666398317-9c8741ef40cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+                <div class="card__content">
+                    <p class="card__status">MORSKNA IN SIG</p>
+                    <h3 class="card__Name">₽123123</h3>
+                </div>
+            </a>
+            <a href="" class="card">
+                <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1592937238218-2cf12690f9ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)"></div>
+                <div class="card__content">
+                    <p class="card__status">TERRORSTA</p>
+                    <h3 class="card__Name">₽1233</h3>
+                </div>
+            </a>
+            <a href="maks.html" class="card">
+                <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1610986942047-58382133242f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80)"></div>
+                <div class="card__content">
+                    <p class="card__status">LUNDEN</p>
+                    <h3 class="card__Name">₽123</h3>
+                </div>
+            </a>
+            <a href="sergay.html" class="card">
+                <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1609109831097-b164c96e5cea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80)"></div>
+                <div class="card__content">
+                    <p class="card__status">NATTPARTI</p>
+                    <h3 class="card__Name">₽123</h3>
+                </div>
+            </a>
+          </a>
+      </div>
+    </section>
+  </div>
+  <div class="about_block" id="about">
+    <div class="about_text">
+      <h2>О нас</h2>
+      <p>Мы - команда мечтателей, которые верят в чудо Нового года. И мы знаем, что главное чудо - это ёлка. Но не простая ёлка, 
+        а норвежская. Потому что норвежские ёлки - это символ качества, стиля и уюта. Они выращены с любовью и заботой в самой 
+        северной стране Европы. И мы хотим подарить вам эту любовь и заботу. Закажите норвежскую ёлку у нас и почувствуйте 
+        себя в сказке!
+      </p>
+    </div>
+  </div>
+  <div class="reviews" id="reviews">
+    <div class="reviews_text">
+      <h2>Отзывы о нас</h2>
+      <div class = "wishes" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1633104502126-ef02b623e6be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+        <p>-Как ёлки?
+            -Я не покупал их. 
+        </p>
+        </div>
+      <div class = "wishes" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1645389418270-efd08ab7a050?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+          <p>- А? Да-да, отличные ёлки </p>
+      </div>
+      <div class = "wishes" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1542596594-649edbc13630?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+          <p>- Как бы Вы оценили качество наших ёлок? <br>
+              - Живые и отличные ёлки</p>
+      </div>
+    </div>
+  </div>
+  <div class="txt">
+    <div class="content">
+      <h1>Мы скоро откроемся!</h1>
+      <p>Отправьте нам Ваш имейл, чтобы получать рассылку</p>
+      <div id="form"> <form action="" method="post">{% csrf_token %}
+          {{ form.as_p}}
+          <div class="btn">
+              <button type="submit">Отправить</button>
+          </div> 
+        </form> 
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p></p>
+  </div>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+      AOS.init()
+  </script>
+</body>
+</html>
